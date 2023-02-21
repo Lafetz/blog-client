@@ -32,7 +32,6 @@ export const Blog = () => {
         }
       })
       .then((res) => {
-        console.log(res);
         setBlog(res);
       });
   }, [id]);
@@ -53,7 +52,7 @@ export const Blog = () => {
   }, [id]);
   return (
     <div className="min-h-screen bg-slate-800  text-white ">
-      <NavBar user={user} />
+      <NavBar user={user} setUser={setUser} />
       <div className="bg-slate-800 h-full text-white">
         <div className="max-w-screen-lg m-auto p-5">
           {blog && (

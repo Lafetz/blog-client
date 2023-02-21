@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 export const Comments = ({ id, comments, user }) => {
-  useEffect(() => {}, []);
-  console.log(user);
   const [comment, setComment] = useState("");
   const commentChange = (e) => {
     setComment(e.target.value);
@@ -10,7 +8,7 @@ export const Comments = ({ id, comments, user }) => {
   const submitComment = (e) => {
     e.preventDefault();
     const commentData = {
-      username: user._id, //
+      username: user.username, //
       blogID: id,
       content: comment,
     };
@@ -27,7 +25,9 @@ export const Comments = ({ id, comments, user }) => {
       .then((res) => {
         if (!res.ok) {
           console.log(res);
-        } else setComment("");
+        } else {
+          setComment("");
+        }
       })
       .catch((err) => {
         console.log(err);

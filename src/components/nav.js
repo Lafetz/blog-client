@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
-export const NavBar = ({ user }) => {
-  const navigate = useNavigate();
+export const NavBar = ({ user, setUser }) => {
   const logout = () => {
     fetch("http://localhost:5000/logout", {
       method: "POST",
@@ -10,7 +8,7 @@ export const NavBar = ({ user }) => {
       credentials: "include",
     }).then((res) => {
       if (res.status === 200) {
-        navigate("/");
+        setUser(null);
       }
     });
   };

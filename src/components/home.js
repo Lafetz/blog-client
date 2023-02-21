@@ -35,7 +35,7 @@ export const HomePage = () => {
 
   return (
     <div className="h-screen">
-      <NavBar user={user} />
+      <NavBar user={user} setUser={setUser} />
       <div className="bg-slate-800 h-full px-10">
         <div className="max-w-screen-lg  m-auto flex flex-col gap-4 py-8">
           {blogs &&
@@ -43,7 +43,7 @@ export const HomePage = () => {
               return (
                 <Link
                   key={blog._id}
-                  to={"/blogs/" + blog.id}
+                  to={`/blogs/${blog._id}`}
                   state={{
                     id: blog._id,
                   }}
