@@ -8,13 +8,15 @@ export const HomePage = () => {
     fetch("http://localhost:5000/user", {
       mode: "cors",
       credentials: "include",
-    }).then((res) => {
-      if (res.status === 200) {
-        res.json().then((user) => {
-          setUser(user);
-        });
-      }
-    });
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          res.json().then((user) => {
+            setUser(user);
+          });
+        }
+      })
+      .catch((err) => {});
   }, []);
   useEffect(() => {
     fetch("http://localhost:5000/blogs", {
@@ -30,7 +32,8 @@ export const HomePage = () => {
       .then((res) => {
         setBlogs(res.blogs);
         console.log(res.blogs);
-      });
+      })
+      .catch((err) => {});
   }, []);
 
   return (

@@ -12,13 +12,15 @@ export const Blog = () => {
     fetch("http://localhost:5000/user", {
       mode: "cors",
       credentials: "include",
-    }).then((res) => {
-      if (res.status === 200) {
-        res.json().then((user) => {
-          setUser(user);
-        });
-      }
-    });
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          res.json().then((user) => {
+            setUser(user);
+          });
+        }
+      })
+      .catch((err) => {});
   }, []);
   useEffect(() => {
     fetch(`http://localhost:5000/blogs/${id}`, {
@@ -33,7 +35,8 @@ export const Blog = () => {
       })
       .then((res) => {
         setBlog(res);
-      });
+      })
+      .catch((err) => {});
   }, [id]);
   useEffect(() => {
     fetch(`http://localhost:5000/blogs/${id}/comments`, {
@@ -48,7 +51,8 @@ export const Blog = () => {
       })
       .then((res) => {
         setComments(res.comments);
-      });
+      })
+      .catch((err) => {});
   }, [id]);
   return (
     <div className="min-h-screen bg-slate-800  text-white ">

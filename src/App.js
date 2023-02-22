@@ -1,4 +1,4 @@
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route, BrowserRouter, HashRouter } from "react-router-dom";
 
 import { HomePage } from "./components/home";
 import { Blog } from "./components/blog";
@@ -6,14 +6,14 @@ import { Login } from "./components/Login";
 import { SignUp } from "./components/signUp";
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/blogs/:id" element={<Blog />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
