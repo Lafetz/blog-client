@@ -12,16 +12,19 @@ export const Comments = ({ id, comments, user }) => {
       blogID: id,
       content: comment,
     };
-    fetch(`http://localhost:5000/blogs/${id}/comments`, {
-      method: "POST",
-      credentials: "include",
-      mode: "cors",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(commentData),
-    })
+    fetch(
+      `https://blog-api-production-9f47.up.railway.app/blogs/${id}/comments`,
+      {
+        method: "POST",
+        credentials: "include",
+        mode: "cors",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(commentData),
+      }
+    )
       .then((res) => {
         if (!res.ok) {
           console.log(res);
@@ -34,11 +37,14 @@ export const Comments = ({ id, comments, user }) => {
       });
   };
   const removeComment = (commentId) => {
-    fetch(`http://localhost:5000/blogs/${id}/comments/${commentId}`, {
-      mode: "cors",
-      method: "DELETE",
-      credentials: "include",
-    }).then((res) => {});
+    fetch(
+      `https://blog-api-production-9f47.up.railway.app/blogs/${id}/comments/${commentId}`,
+      {
+        mode: "cors",
+        method: "DELETE",
+        credentials: "include",
+      }
+    ).then((res) => {});
   };
   return (
     <div className="py-6">

@@ -1,9 +1,11 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 export const SignUp = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
   const submitForm = (e) => {
     e.preventDefault();
     const signupData = {
@@ -11,7 +13,7 @@ export const SignUp = () => {
       password: password,
       confirmPassword: confirmPassword,
     };
-    fetch("http://localhost:5000/signup", {
+    fetch("https://blog-api-production-9f47.up.railway.app/signup", {
       mode: "cors",
       method: "POST",
       headers: {
@@ -19,14 +21,11 @@ export const SignUp = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(signupData),
-    })
-      .then((res) => {
-        console.log(res);
-        return res.json();
-      })
-      .then((res) => {
-        console.log(res);
-      });
+    }).then((res) => {
+      if (res.status === 200) {
+        navigate("/");
+      }
+    });
   };
   const usernameChange = (e) => {
     setUsername(e.target.value);

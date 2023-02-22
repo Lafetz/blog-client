@@ -5,7 +5,7 @@ export const HomePage = () => {
   const [blogs, setBlogs] = useState(null);
   const [user, setUser] = useState(null);
   useEffect(() => {
-    fetch("http://localhost:5000/user", {
+    fetch("https://blog-api-production-9f47.up.railway.app/user", {
       mode: "cors",
       credentials: "include",
     })
@@ -19,7 +19,7 @@ export const HomePage = () => {
       .catch((err) => {});
   }, []);
   useEffect(() => {
-    fetch("http://localhost:5000/blogs", {
+    fetch("https://blog-api-production-9f47.up.railway.app/blogs", {
       mode: "cors",
       credentials: "include",
     })
@@ -31,7 +31,6 @@ export const HomePage = () => {
       })
       .then((res) => {
         setBlogs(res.blogs);
-        console.log(res.blogs);
       })
       .catch((err) => {});
   }, []);

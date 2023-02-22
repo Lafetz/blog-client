@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export const NavBar = ({ user, setUser }) => {
   const logout = () => {
-    fetch("http://localhost:5000/logout", {
+    fetch("https://blog-api-production-9f47.up.railway.app/logout", {
       method: "POST",
       mode: "cors",
       credentials: "include",

@@ -9,7 +9,7 @@ export const Blog = () => {
   const [blog, setBlog] = useState(null);
   const [user, setUser] = useState(null);
   useEffect(() => {
-    fetch("http://localhost:5000/user", {
+    fetch("https://blog-api-production-9f47.up.railway.app/user", {
       mode: "cors",
       credentials: "include",
     })
@@ -23,7 +23,7 @@ export const Blog = () => {
       .catch((err) => {});
   }, []);
   useEffect(() => {
-    fetch(`http://localhost:5000/blogs/${id}`, {
+    fetch(`https://blog-api-production-9f47.up.railway.app/blogs/${id}`, {
       mode: "cors",
       credentials: "include",
     })
@@ -39,10 +39,13 @@ export const Blog = () => {
       .catch((err) => {});
   }, [id]);
   useEffect(() => {
-    fetch(`http://localhost:5000/blogs/${id}/comments`, {
-      mode: "cors",
-      credentials: "include",
-    })
+    fetch(
+      `https://blog-api-production-9f47.up.railway.app/blogs/${id}/comments`,
+      {
+        mode: "cors",
+        credentials: "include",
+      }
+    )
       .then((res) => {
         if (!res.ok) {
         } else {

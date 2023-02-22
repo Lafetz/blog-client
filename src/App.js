@@ -6,7 +6,7 @@ import { Login } from "./components/Login";
 import { SignUp } from "./components/signUp";
 function App() {
   return (
-    <HashRouter>
+    <HashRouter basename="/">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/blogs/:id" element={<Blog />} />
