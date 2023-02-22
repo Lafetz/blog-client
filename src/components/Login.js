@@ -69,9 +69,13 @@ export const Login = () => {
           </button>
           <span className="text-red-500">{error}</span>
         </form>
-        <Link className="font-bold hover:underline " to="/signup">
-          Sign up{" "}
-        </Link>
+        <span
+          className="font-bold hover:underline text-lg m-auto
+        "
+        >
+          {" "}
+          <Link to="/signup">Sign up </Link>
+        </span>
       </div>
     </div>
   );

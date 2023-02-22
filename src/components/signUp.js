@@ -5,6 +5,7 @@ export const SignUp = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [message, setMessage] = useState("");
   const navigate = useNavigate();
   const submitForm = (e) => {
     e.preventDefault();
@@ -23,7 +24,7 @@ export const SignUp = () => {
       body: JSON.stringify(signupData),
     }).then((res) => {
       if (res.status === 200) {
-        navigate("/");
+        setMessage("Success! press Login");
       }
     });
   };
@@ -40,6 +41,9 @@ export const SignUp = () => {
     <div className="h-screen bg-slate-800 flex justify-center items-center">
       <div className="border-2 border-white text-white p-8 flex flex-col gap-5 ">
         <h1 className="bold text-2xl font-bold w-fit m-auto">Sign up</h1>
+        <span className="text-green-500 text-lg bold w-fit m-auto">
+          {message}
+        </span>
         <form onSubmit={submitForm} className="flex flex-col gap-5">
           <div>
             <label className="block w-max" htmlFor="username" required>
@@ -75,10 +79,11 @@ export const SignUp = () => {
             Sign Up
           </button>
         </form>
-        <span>
-          <Link className="font-bold hover:underline " to="/login">
-            Log in
-          </Link>
+        <span
+          className="font-bold hover:underline text-lg m-auto
+        "
+        >
+          <Link to="/login">Log in</Link>
         </span>
       </div>
     </div>
